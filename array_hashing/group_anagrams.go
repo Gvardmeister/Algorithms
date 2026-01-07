@@ -1,0 +1,50 @@
+package array_hashing
+
+/*
+	Lvl - medium
+
+	Лучшая структура данных - это HashMap
+	Краевые случаи: изначальный массив не может быть пустым
+	Сложность: O(n*k) по времени, O(n*k) по памяти
+*/
+
+func GroupAnagrams(strs []string) [][]string {
+	if len(strs) == 0 {
+		return nil
+	}
+
+	groups := make(map[[26]int][]string)
+
+	for _, str := range strs {
+		var arr [26]int
+
+		for i := 0; i < len(str); i++ {
+			arr[str[i]-'a']++
+		}
+
+		groups[arr] = append(groups[arr], str)
+	}
+
+	result := make([][]string, 0, len(groups))
+	for _, group := range groups {
+		result = append(result, group)
+	}
+
+	return result
+}
+
+/*
+	Перенести в main(), проверено с другими тест-кейсами
+
+	strs := []string{"act", "pots", "tops", "cat", "stop", "hat"}
+	strsTwo := []string{"x"}
+	var strsThree []string
+
+	result := array_hashing.GroupAnagrams(strs)
+	resultTwo := array_hashing.GroupAnagrams(strsTwo)
+	resultThree := array_hashing.GroupAnagrams(strsThree)
+
+	fmt.Println(result)
+	fmt.Println(resultTwo)
+	fmt.Println(resultThree)
+*/
