@@ -1,4 +1,4 @@
-package array_hashing
+package array_hashing_medium
 
 /*
 	Lvl - medium
@@ -14,7 +14,6 @@ func GroupAnagrams(strs []string) [][]string {
 	}
 
 	groups := make(map[[26]int][]string)
-
 	for _, str := range strs {
 		var arr [26]int
 

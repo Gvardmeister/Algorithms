@@ -1,4 +1,4 @@
-package array_hashing
+package array_hashing_easy
 
 /*
 	Lvl - easy
