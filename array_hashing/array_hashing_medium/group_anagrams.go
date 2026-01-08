@@ -6,6 +6,20 @@ package array_hashing_medium
 	Лучшая структура данных - это HashMap
 	Краевые случаи: изначальный массив не может быть пустым
 	Сложность: O(n*k) по времени, O(n*k) по памяти
+
+	Имея массив строк strs, сгруппируйте все анаграммы в подсписки.
+	Вы можете вернуть результат в любом порядке.
+	Анаграмма — это строка, которая содержит точно такие же символы,
+	как и другая строка, но порядок символов может быть другим.
+
+	Input: strs = ["act","pots","tops","cat","stop","hat"]
+	Output: [["hat"],["act", "cat"],["stop", "pots", "tops"]]
+
+	Input: strs = ["x"]
+	Output: [["x"]]
+
+	Input: strs = [""]
+	Output: [[""]]
 */
 
 func GroupAnagrams(strs []string) [][]string {
@@ -14,6 +28,7 @@ func GroupAnagrams(strs []string) [][]string {
 	}
 
 	groups := make(map[[26]int][]string)
+
 	for _, str := range strs {
 		var arr [26]int
 
@@ -25,6 +40,7 @@ func GroupAnagrams(strs []string) [][]string {
 	}
 
 	result := make([][]string, 0, len(groups))
+
 	for _, group := range groups {
 		result = append(result, group)
 	}

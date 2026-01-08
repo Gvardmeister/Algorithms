@@ -11,20 +11,29 @@ import (
 	Лучшая структура - это HashMap
 	Краевые случаи: разная длина строк, строки пусты или пробел - false
 	Сложность: O(n) по времени, O(n) по памяти
+
+	Даны две строки.
+	Написать функцию, которая проверяет, являются ли одна анаграммой другой,
+	то есть содержат одни и те же символы, но возможно в разном порядке.
+	Например, abcdef и abdcfe - анаграммы, а abcdef и abcddef - нет.
 */
 
 func IsAnagram(s string, t string) bool {
-	s = strings.ToLower(strings.TrimSpace(s))
-	t = strings.ToLower(strings.TrimSpace(t))
+	// Можно добавить strings.TrimSpace()
+
+	s = strings.ToLower(s)
+	t = strings.ToLower(s)
 
 	if utf8.RuneCountInString(s) != utf8.RuneCountInString(t) {
 		return false
 	}
 
+	// Альтернатива if len(runnersS) != len(runnersT) {return false}
+
+	resultMap := make(map[rune]int)
 	runnersS := []rune(s)
 	runnersT := []rune(t)
 
-	resultMap := make(map[rune]int, len(s+t))
 	for i := 0; i < len(runnersS); i++ {
 		resultMap[runnersS[i]]++
 		resultMap[runnersT[i]]--
